@@ -10,7 +10,7 @@ module shifter8Bits(input shiftType, input num, output out);
             3'b000:  out = num>>k;
             3'b001:  out = num<<k;
             3'b010:  out = num>>>k;
-            3'b011:  out = num<<k;
+            3'b011:  out = num<<<k;
             3'b100: out = {num[k-1:0],num[7:k]};
             3'b101: out = {num[8-k:0],num[7:8-k]};
             default: out = 8'b0;
@@ -41,7 +41,7 @@ module shifter8Bits #(
             3'b000:  out = num >> k; // Logical Right Shift
             3'b001:  out = num << k; // Logical Left Shift
             3'b010:  out = num >>> k; // Arithmetic Right Shift
-            3'b011:  out = num << k; // Logical Left Shift (Same as 001)
+            3'b011:  out = num <<< k; // Logical Left Shift (Same as 001)
             3'b100:  out = {num[k-1:0], num[7:k]}; // Rotate Left
             3'b101:  out = {num[8-k:0], num[7:8-k]}; // Rotate Right
             default: out = 8'b0;
